@@ -1,0 +1,164 @@
+# Stick Figure Move
+
+import pygame
+
+import random
+
+# define colors
+Black = (0, 0, 0)
+White = (255, 255, 255)
+Green = (0, 255, 0)
+Red = (255, 0, 0)
+Blue = (0, 0, 255)
+Tan = (255, 234, 178)
+
+
+def draw_stick_figure(screen, x, y):
+    # Head
+    pygame.draw.circle(screen, Tan, (x + 6, y), 10)
+
+    # Legs
+    pygame.draw.line(screen, Blue, [5 + x, 27 + y], [10 + x, 47 + y], 2)
+    pygame.draw.line(screen, Blue, [5 + x, 27 + y], [x, 47 + y], 2)
+
+    # Body
+    pygame.draw.line(screen, Red, [5 + x, 26 + y], [5 + x, 7 + y], 2)
+
+    # Arms
+    pygame.draw.line(screen, Black, [5 + x, 6 + y], [9 + x, 27 + y], 2)
+    pygame.draw.line(screen, Black, [5 + x, 6 + y], [1 + x, 27 + y], 2)
+
+
+# set up
+pygame.init()
+
+# [width,height]
+size = [751, 650]
+screen = pygame.display.set_mode(size)
+
+# create caption
+pygame.display.set_caption('My Stick Figure')
+
+# loop until done is True
+finished = False
+
+# manage how fast the screen updates
+clock = pygame.time.Clock()
+
+# stickfigure
+# speed
+x_speed = 0
+y_speed = 0
+# current position
+x_coord = 10
+y_coord = 10
+
+# cacti
+trophy = pygame.image.load('cactus.png')
+enemies = pygame.image.load('cactus (1).png')
+
+
+# function that makes a cactus appear at a random spot
+def Enemies():
+    enemyX = random.randrange(50, 700)
+    enemyY = random.randrange(0, 650)
+    # show up on screen at random spots
+    screen.blit(enemies, (enemyX, enemyY))
+
+
+##---------Main Loop---------------------------------------------
+
+# not finished SAME AS finished == False
+# running SAME AS running == True
+while not finished:
+
+    for event in pygame.event.get():
+        # EXIT SYSTEM
+        if event.type == pygame.QUIT:
+            finished = True
+
+        # looking at key presses - up arrow, down arrow, etc
+        elif event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_LEFT or event.key == pygame.K_a:
+                x_speed = -3
+            if event.key == pygame.K_RIGHT or event.key == pygame.K_d:
+                x_speed = 3
+            if event.key == pygame.K_UP or event.key == pygame.K_w:
+                y_speed = -3
+            if event.key == pygame.K_DOWN or event.key == pygame.K_s:
+                y_speed = 3
+
+        elif event.type == pygame.KEYUP:
+            if event.key == pygame.K_LEFT or event.key == pygame.K_RIGHT or \
+                    event.key == pygame.K_a or event.key == pygame.K_d:
+                x_speed = 0
+            if event.key == pygame.K_UP or event.key == pygame.K_DOWN \
+                    or event.key == pygame.K_w or event.key == pygame.K_s:
+                y_speed = 0
+
+    # stick figure movement
+    x_coord = x_coord + x_speed
+    y_coord = y_coord + y_speed
+
+    # color screen
+    screen.fill(Green)
+
+    draw_stick_figure(screen, x_coord, y_coord)
+
+    # show cacti
+    screen.blit(trophy, (600, 30))
+
+    # show enemies
+    Enemies()
+
+    # display updates
+    pygame.display.flip()
+
+    # clock.tick(loops through while loop per second)
+    clock.tick(60)
+
+# once we get kicked out of the while loop, we know we are finished & we quit
+pygame.quit()
+
+'''
+Today:
+-choose block
+-place 3 blocks on screen
+- RANDOMLY place 3 blocks on screen
+(to the right of player starting point
+and to the left of trophy)
+-place "end" on screen
+-how to code so that if player hits block, player restarts
+
+
+random.randrange
+screen.blit(enemies, random spot)
+random spot = (x, y)
+x = random.randrange(50,700)
+y = random.randrange(0,650)
+
+
+function for enemies:
+enemyX = random.randrange(50,700)
+enemyY = random.randrange(0,650)
+#show up on screen at random spots
+screen.blit(enemies, (enemyX,enemyY))
+
+'''
+
+'''
+IDEAS FOR WHAT TO ADD:
+- obstacles
+- mean aliens
+- lasers 
+- green dots that give power ups
+- red dots that explode you for 5 seconds
+
+
+LASERS PLANNING
+lines that come from bottom and top of screen
+lines are vertical, red, 3 pixels long
+appear at random x values ***need to import random***
+one hit == game over
+'''
+
