@@ -1,0 +1,27 @@
+#sushi - ushisay
+#hello - ellohay
+
+# taking letter at index 0 and putting it at the end
+# adding ay at the end
+
+def piglatinword(word):
+    #save the first letter of word
+    step1 = word[0]
+    #delete the first letter
+    step2 = word[1:]
+    #put these together
+    step3 = step2 + step1
+    #add 'ay'
+    step4 = step3 + 'ay'
+    return step4
+    
+def piglatinconverter(sentence):
+    words = sentence.split(' ')
+    convertedsentence = ''
+    for word in words:
+        converted = piglatinword(word)
+        convertedsentence += converted + ' '
+    print(convertedsentence)
+    
+piglatinconverter('This is the best coding group')
+        
