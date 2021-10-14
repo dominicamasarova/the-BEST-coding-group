@@ -1,0 +1,31 @@
+import time
+from time import *
+
+print('running for loop...')
+t1= time()
+
+for num in range(97,123):
+    print(chr(num))
+    
+t2 = time()
+tFor = t2 - t1
+
+
+print('running while loop...')
+t1 = time()
+
+num = 97
+while num <= 122:
+    print(chr(num))
+    num += 1
+    
+t2 = time()
+tWhile = t2 - t1
+
+print('for loop took',tFor)
+print('while loop took', tWhile)
+
+# ord: letter --> dec
+# chr: dec --> letter
+
+# ascii of lowercase is: 97-122
