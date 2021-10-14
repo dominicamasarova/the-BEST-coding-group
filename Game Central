@@ -1,0 +1,453 @@
+import random
+import turtle
+from turtle import *
+'''
+PSUEDOCODE
+- main function
+ask which game you wanna play
+call the corresponding game
+-put code for games below
+'''
+def TurtleRace():
+  #speed, starting point
+  speed(0)
+  penup()
+  goto(-160,100)
+  
+  #set up our track
+  for step in range(18):
+    pendown()
+    write(step)
+    penup()
+    right(90)
+    forward(10)
+    pendown()
+    forward(150)
+    penup()
+    left(180)
+    forward(160)
+    right(90)
+    forward(20)
+  
+  #set up turtles  
+  geo = Turtle()
+  geo.color('green')
+  geo.shape('turtle')
+  geo.penup()
+  geo.goto(-180, 60)
+  
+  joe = Turtle()
+  joe.color("red")
+  joe.shape('turtle')
+  joe.penup()
+  joe.goto(-180, 20)
+  
+  giovanni = Turtle()
+  giovanni.color("blue")
+  giovanni.shape("turtle")
+  giovanni.penup()
+  giovanni.goto(-180, -20)
+  
+  #racing part
+  spot1 = 0
+  spot2 = 0
+  spot3 = 0
+  
+  while spot1 <= 360 and spot2 <= 360 and spot3 <= 360:
+    geomove = random.randrange(1,6)
+    joemove = random.randrange(1,6)
+    giovannimove = random.randrange(1,6)
+    geo.forward(geomove)
+    joe.forward(joemove)
+    giovanni.forward(giovannimove)
+    spot1 += geomove
+    spot2 += joemove
+    spot3 += giovannimove
+    
+    
+def guessNumber():
+   #number = 21
+   number = random.randrange(1,20)
+   guess = int(input("Guess a number. "))
+   #while the user does not guess your number, you will say "wrong guess, try again"
+   while guess != number:
+       print("Wrong guess, try again!!!!!")
+       guess = int(input("Guess another number. "))
+   print ("Horray, you guessed the number!")
+
+
+def RockPaperScissors():
+  #Print introduction, best of 5!
+  print("Hello, let's play Rock, Paper, Scissors!")
+  print("Best of 5 rounds wins!")
+  #rounds = 1
+  rounds = 1
+  points = 0
+  userPoints = 0
+  #while rounds <= 5:
+  while rounds <= 5:
+     #options = ["rock", "paper", "scissors"]
+     options = ["rock", "paper", "scissors"]
+     #spot = random.randrange(0,3)
+     spot = random.randrange(0,3)
+     #choice = options[spot]
+     choice = options[spot]
+     #print(choice)
+     #otherChoice = str(input("rock, paper, or scissors? "))
+     userChoice = str(input("rock, paper, or scissors? "))
+     #if choice == "rock":
+     if choice == "rock":
+         #if user chose rock: tie! no one gets a point
+         if userChoice == "rock":
+             print("Tie!")
+         #if user chose paper: user wins! user gets point
+         elif userChoice == "paper":
+             print("You win this round...")
+             userPoints += 1
+         #if user chose scissors: we win! we get point
+         elif userChoice == "scissors":
+             print("I won this round!!!")
+             points += 1
+     #elif we chose paper:
+     if choice == "paper":
+          #if user chose rock: we win! we get point
+          if userChoice == "rock":
+             print("I won this round!!!")
+             points += 1
+          #if user chose paper: tie! no one gets a point
+          elif userChoice == "paper":
+             print("Tie!")
+          #if user chose scissors: user wins! user gets point
+          elif userChoice == "scissors":
+             print("You win this round.....")
+             userPoints += 1
+     #elif we chose scissors:
+     elif choice == "scissors":
+          #if user chose rock: user wins! user gets a point
+          if userChoice == "rock":
+             print("You win this round...")
+             userPoints += 1
+          #if user chose paper: we win! we get a point
+          elif userChoice == "paper":
+             print("I won this round!!!")
+             points += 1
+          #if user chose scissors: tie! no one gets a point
+          elif userChoice == "scissors":
+             print("Tie!")
+     #rounds += 1
+     rounds +=1
+  #print points and say who won
+  if points == userPoints:
+      print("We tied! We both got", points, "points." )
+  elif points > userPoints:
+      print("I win the game! Better luck next time..")
+      print("I got", points, "points and you got", userPoints, "points." )
+  elif points < userPoints:
+      print("Dang it, you won? I think you cheated...")
+      print("I demand a rematch!!! NOW!!!")
+      print("I got", points, "points and you got", userPoints, "points." )
+        
+    
+def EightBall():
+  print("WELCOME TO THE ALL KNOWING, MAGIC EIGHTBALL!!!")
+  answers = ["Yes.", "No.", "Try again next time.",\
+  "Odds are in your favor.", "Odds aren't in your favor.", \
+  "Concentrate and ask again.", "Maybe.", "Do I look like\
+  wikipedia to you?!", "Ask google, not me!!!", "It is clearly so."]
+  question = str(input("Ask me your question!!! "))
+  answer = random.randrange(0,10)
+  print(answers[answer])
+  rerun = str(input("Would you like to ask another question? (yes/no) "))
+  if rerun == "yes":
+      EightBall()
+  else:
+      print("Thanks for playing!")  
+
+def main():
+  print("Welcome to ..... GAME CENTRAL!!!!!!")
+  print("There are four games to play, choose which one you want to play.")
+  print("Game #1: Turtle race")
+  print('Game #2: Guess a number')
+  print("Game #3: Rock, paper, scissors")
+  print("Game #4: Eightball")
+  game = int(input("Which game do you want to play? (1, 2, 3, 4): "))
+  if game == 1:
+    TurtleRace()
+  elif game == 2:
+    guessNumber()
+  elif game == 3:
+    RockPaperScissors()
+  elif game == 4:
+    EightBall()
+  else:
+    print("That is not a valid option, please try again.")
+  
+  #ask if user wants to play another game
+main()  
+  
+
+On Fri, Aug 21, 2020 at 3:37 PM Dominica Masarova <dm36@stmarys-ca.edu> wrote:
+'''
+PSUEDOCODE
+- main function
+ask which game you wanna play
+call the corresponding game
+-put code for games below
+'''
+
+def main():
+  
+  
+  
+  
+def TurtleRace():
+  import turtle
+  from turtle import *
+  
+  import random
+  
+  #speed, starting point
+  speed(0)
+  penup()
+  goto(-160,100)
+  
+  #set up our track
+  for step in range(18):
+    pendown()
+    write(step)
+    penup()
+    right(90)
+    forward(10)
+    pendown()
+    forward(150)
+    penup()
+    left(180)
+    forward(160)
+    right(90)
+    forward(20)
+  
+  #set up turtles  
+  geo = Turtle()
+  geo.color('green')
+  geo.shape('turtle')
+  geo.penup()
+  geo.goto(-180, 60)
+  
+  joe = Turtle()
+  joe.color("red")
+  joe.shape('turtle')
+  joe.penup()
+  joe.goto(-180, 20)
+  
+  giovanni = Turtle()
+  giovanni.color("blue")
+  giovanni.shape("turtle")
+  giovanni.penup()
+  giovanni.goto(-180, -20)
+  
+  #racing part
+  spot1 = 0
+  spot2 = 0
+  spot3 = 0
+  
+  while spot1 <= 360 and spot2 <= 360 and spot3 <= 360:
+    geomove = random.randrange(1,6)
+    joemove = random.randrange(1,6)
+    giovannimove = random.randrange(1,6)
+    geo.forward(geomove)
+    joe.forward(joemove)
+    giovanni.forward(giovannimove)
+    spot1 += geomove
+    spot2 += joemove
+    spot3 += giovannimove
+    
+
+def guessNumber():
+  import random
+   #number = 21
+   number = random.randrange(1,20)
+   guess = int(input("Guess a number. "))
+   #while the user does not guess your number, you will say "wrong guess, try again"
+   while guess != number:
+       print("Wrong guess, try again!!!!!")
+       guess = int(input("Guess another number. "))
+   print ("Horray, you guessed the number!")
+
+
+def RockPaperScissors():
+  #import random
+  import random
+    #Print introduction, best of 5!
+    print("Hello, let's play Rock, Paper, Scissors!")
+    print("Best of 5 rounds wins!")
+    #rounds = 1
+    rounds = 1
+    points = 0
+    userPoints = 0
+    #while rounds <= 5:
+    while rounds <= 5:
+       #options = ["rock", "paper", "scissors"]
+       options = ["rock", "paper", "scissors"]
+       #spot = random.randrange(0,3)
+       spot = random.randrange(0,3)
+       #choice = options[spot]
+       choice = options[spot]
+       print(choice)
+       #otherChoice = str(input("rock, paper, or scissors? "))
+       userChoice = str(input("rock, paper, or scissors? "))
+       #if choice == "rock":
+       if choice == "rock":
+           #if user chose rock: tie! no one gets a point
+           if userChoice == "rock":
+               print("Tie!")
+           #if user chose paper: user wins! user gets point
+           elif userChoice == "paper":
+               print("You win this round...")
+               userPoints += 1
+           #if user chose scissors: we win! we get point
+           elif userChoice == "scissors":
+               print("I won this round!!!")
+               points += 1
+       #elif we chose paper:
+       if choice == "paper":
+            #if user chose rock: we win! we get point
+            if userChoice == "rock":
+               print("I won this round!!!")
+               points += 1
+            #if user chose paper: tie! no one gets a point
+            elif userChoice == "paper":
+               print("Tie!")
+            #if user chose scissors: user wins! user gets point
+            elif userChoice == "scissors":
+               print("You win this round.....")
+               userPoints += 1
+       #elif we chose scissors:
+       elif choice == "scissors":
+            #if user chose rock: user wins! user gets a point
+            if userChoice == "rock":
+               print("You win this round...")
+               userPoints += 1
+            #if user chose paper: we win! we get a point
+            elif userChoice == "paper":
+               print("I won this round!!!")
+               points += 1
+            #if user chose scissors: tie! no one gets a point
+            elif userChoice == "scissors":
+               print("Tie!")
+       #rounds += 1
+       rounds +=1
+    #print points and say who won
+    if points == userPoints:
+        print("We tied! We both got", points, "points." )
+    elif points > userPoints:
+        print("I win the game! Better luck next time..")
+        print("I got", points, "points and you got", userPoints, "points." )
+    elif points < userPoints:
+        print("Dang it, you won? I think you cheated...")
+        print("I demand a rematch!!! NOW!!!")
+        print("I got", points, "points and you got", userPoints, "points." )
+        
+    
+def EightBall():
+  import random
+  print("WELCOME TO THE ALL KNOWING, MAGIC EIGHTBALL!!!")
+  answers = ["Yes.", "No.", "Try again next time.",\
+  "Odds are in your favor.", "Odds aren't in your favor.", \
+  "Concentrate and ask again.", "Maybe.", "Do I look like\
+  wikipedia to you?!", "Ask google, not me!!!", "It is clearly so."]
+  question = str(input("Ask me your question!!! "))
+  answer = random.randrange(0,10)
+  print(answers[answer])
+  rerun = str(input("Would you like to ask another question? (yes/no) "))
+  if rerun == "yes":
+      EightBall()
+  else:
+      print("Thanks for playing!")  
+
+On Fri, Aug 21, 2020 at 3:27 PM Dominica Masarova <dm36@stmarys-ca.edu> wrote:
+def guessNumber():
+  import random
+   #number = 21
+   number = random.randrange(1,20)
+   guess = int(input("Guess a number. "))
+   #while the user does not guess your number, you will say "wrong guess, try again"
+   while guess != number:
+       print("Wrong guess, try again!!!!!")
+       guess = int(input("Guess another number. "))
+   print ("Horray, you guessed the number!")
+
+On Fri, Aug 21, 2020 at 3:15 PM Dominica Masarova <dm36@stmarys-ca.edu> wrote:
+'''
+PSUEDOCODE
+- main function
+ask which game you wanna play
+call the corresponding game
+-put code for games below
+'''
+
+def main():
+  
+  
+  
+  
+def TurtleRace():
+  import turtle
+  from turtle import *
+  
+  import random
+  
+  #speed, starting point
+  speed(0)
+  penup()
+  goto(-160,100)
+  
+  #set up our track
+  for step in range(18):
+    pendown()
+    write(step)
+    penup()
+    right(90)
+    forward(10)
+    pendown()
+    forward(150)
+    penup()
+    left(180)
+    forward(160)
+    right(90)
+    forward(20)
+  
+  #set up turtles  
+  geo = Turtle()
+  geo.color('green')
+  geo.shape('turtle')
+  geo.penup()
+  geo.goto(-180, 60)
+  
+  joe = Turtle()
+  joe.color("red")
+  joe.shape('turtle')
+  joe.penup()
+  joe.goto(-180, 20)
+  
+  giovanni = Turtle()
+  giovanni.color("blue")
+  giovanni.shape("turtle")
+  giovanni.penup()
+  giovanni.goto(-180, -20)
+  
+  #racing part
+  spot1 = 0
+  spot2 = 0
+  spot3 = 0
+  
+  while spot1 <= 360 and spot2 <= 360 and spot3 <= 360:
+    geomove = random.randrange(1,6)
+    joemove = random.randrange(1,6)
+    giovannimove = random.randrange(1,6)
+    geo.forward(geomove)
+    joe.forward(joemove)
+    giovanni.forward(giovannimove)
+    spot1 += geomove
+    spot2 += joemove
+    spot3 += giovannimove
+    
