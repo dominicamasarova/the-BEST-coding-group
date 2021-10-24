@@ -1,0 +1,118 @@
+import turtle
+from turtle import *
+  
+import random
+
+import time as t
+
+
+def TurtleRace():
+  
+  #speed, starting point
+  speed(0)
+  penup()
+  goto(-160,100)
+  
+  #set up our track
+  for step in range(18):
+    pendown()
+    write(step)
+    penup()
+    right(90)
+    forward(10)
+    pendown()
+    forward(150)
+    penup()
+    left(180)
+    forward(160)
+    right(90)
+    forward(20)
+  
+  #set up turtles  
+  geo = Turtle()
+  geo.color('green')
+  geo.shape('turtle')
+  geo.penup()
+  geo.goto(-180, 60)
+  
+  joe = Turtle()
+  joe.color("red")
+  joe.shape('turtle')
+  joe.penup()
+  joe.goto(-180, 20)
+  
+  giovanni = Turtle()
+  giovanni.color("blue")
+  giovanni.shape("turtle")
+  giovanni.penup()
+  giovanni.goto(-180, -20)
+  
+  #racing part
+  
+  #initialize the dist turtles have travelled
+  spot1 = 0
+  spot2 = 0
+  spot3 = 0
+  
+  #race
+  print('On your marks...')
+  print('Get set....')
+  print('Go!')
+  start = t.time()
+  while spot1 <= 360 and spot2 <= 360 and spot3 <= 360:
+    geomove = random.randrange(1,6)
+    joemove = random.randrange(1,6)
+    giovannimove = random.randrange(1,6)
+    geo.forward(geomove)
+    joe.forward(joemove)
+    giovanni.forward(giovannimove)
+    spot1 += geomove
+    spot2 += joemove
+    spot3 += giovannimove
+  
+  end = t.time()
+  print('Race has finished!')
+  timepassed = end-start
+  print('The race took',round(timepassed,1), 'seconds!')
+  
+  #find who moved farthest
+  if spot1 > spot2 and spot1 > spot3:
+    #spot 1 is greatest
+    winner = 1
+    print('Geo Won!')
+  elif spot2 > spot1 and spot2 > spot3:
+    #spot 2 is greatest
+    winner = 2
+    print('Joe Won!')
+  elif spot3 > spot2 and spot3 > spot1:
+    #spot 1 is greatest
+    winner = 3
+    print('Giovanni Won!')
+    
+  #who won second place?
+  #Geo won
+  if winner == 1:
+    if max(spot2,spot3) == spot2:
+      print('Joe placed second!')
+    elif max(spot2,spot3) == spot3:
+      print('Giovanni placed second!')
+  
+  #Joe won    
+  elif winner == 2:
+    if max(spot1,spot3) == spot1:
+      print('Geo placed second!')
+    elif max(spot1,spot3) == spot3:
+      print('Giovanni placed second!')
+  
+  #Giovanni won    
+  if winner == 3:
+    if max(spot2,spot1) == spot2:
+      print('Joe placed second!')
+    elif max(spot2,spot1) == spot1:
+      print('Geo placed second!')
+    
+TurtleRace()
+
+#add visible stop watch
+
+
