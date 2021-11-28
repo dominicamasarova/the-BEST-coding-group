@@ -1,0 +1,196 @@
+'''
+1. California, USA 12pm
+2. France 9 pm
+3. Pakistan 1 am
+4. Singapore 4 am
+5. Yemen 11 pm
+6. New York 3 pm
+7. Indonesia 3 am
+8. London 8 pm
+9. Colombo 1:30 am
+10. Colorado 1 pm
+11. Hawaii 10 am
+
+1. Foster City, California, USA +0
+2. Paris, France +9
+3. Karachi, Pakistan +13
+4. Singapore, Singapore +16
+5. Sana'a, Yemen +11
+6. New York City, New York +3
+7. Surabaya, Indonesia +15
+8. London, England +8
+9. Colombo, Sri Lanka +13.5
+10. Denver, Colorado +1
+11. Honolulu, Hawaii -2
+
+'''
+
+
+'''
+program: intro, explain what it does
+user: inputs time and where they want to know the local time
+program: time for the country
+
+
+ex:
+program: 'hello, welcome, blah blah blah'
+user: 12:13, Yemen
+program: 11:13 pm
+'''
+
+
+
+
+
+def Time():
+  print('Welcome to the Time Zone machine! This machine converts \
+  California/Pacific Standard Time to a time zone of your choice.')
+  print('''Your options are: \n Foster City, California \
+  \n Paris, France \n Karachi, Pakistan \n Singapore, Singapore \
+  \n Sana'a, Yemen \n New York City, New York \n Surabaya, Indonesia \
+  \n London, England \n Colombo, Sri Lanka \n Denver, Colorado \
+  \n Honolulu, Hawaii ''')
+  #get time from user 
+  time = str(input('What is the time in California? (in the format HH:MM) '))
+  #get city from user
+  city = str(input('Where do you want to convert to? (in the format above) '))
+ 
+ #takes hours and mins from time input
+  hour = int(time[0:2]) #'10:38'> '10' > 10
+  mins = int(time[3:5]) #'10:38'> '38' > 38
+ 
+ 
+  if city == 'Paris, France':
+    #add 9 to the time > add 9 to hour
+    hour += 9
+    #limit hour to 24
+    if hour >= 24:
+        hour -= 24
+    #print the new time 'hour:mins'
+    #print 'In [place], it is [time]'
+    print('In ' + city +  ' it is ' + str(hour) + ':' + str(mins))
+    print('I believe that is... BAGUETTE TIME!')
+   
+  elif city == 'Karachi, Pakistan':
+    #add 13 to the time
+    hour += 13
+    #limit hour to 24
+    if hour >= 24:
+        hour -= 24
+    #print the new time 'hour:mins'
+    #print 'In [place], it is [time]'
+    print('In ' + city +  ' it is ' + str(hour) + ':' + str(mins))
+    print('BEDTIME!')
+   
+  elif city == 'Singapore, Singapore':
+    #add 16 to the time
+    hour += 16
+    #limit hour to 24
+    if hour >= 24:
+        hour -= 24
+    #print the new time 'hour:mins'
+    #print 'In [place], it is [time]'
+    print('In ' + city +  ' it is ' + str(hour) + ':' + str(mins))
+    print('''It's Mahjong Time!''')
+ 
+  elif city == '''Sana'a, Yemen''':
+    #add 11 to the time
+    hour += 11
+    #limit hour to 24
+    if hour >= 24:
+        hour -= 24
+    #print the new time 'hour:mins'
+    #print 'In [place], it is [time]'
+    print('In ' + city +  ' it is ' + str(hour) + ':' + str(mins))
+    print('''It's time to count all the windows''')
+   
+  elif city == 'New York City, New York':
+    #add 3 to the time
+    hour += 3
+    #limit hour to 24
+    if hour >= 24:
+        hour -= 24
+    #print the new time 'hour:mins'
+    #print 'In [place], it is [time]'
+    print('In ' + city +  ' it is ' + str(hour) + ':' + str(mins))
+    print('''There's SNOW time like SHOW time.''')
+    
+  elif city == 'Surabaya, Indonesia':
+    #add 15 to the time
+    hour += 15
+    #limit hour to 24
+    if hour >= 24:
+        hour -= 24
+    #print the new time 'hour:mins'
+    #print 'In [place], it is [time]'
+    print('In ' + city +  ' it is ' + str(hour) + ':' + str(mins))
+    print('Time to pray.')
+    
+  elif city == 'London, England':
+    #add 8 to the time
+    hour += 8
+    #limit hour to 24
+    if hour >= 24:
+        hour -= 24
+    #print the new time 'hour:mins'
+    #print 'In [place], it is [time]'
+    print('In ' + city +  ' it is ' + str(hour) + ':' + str(mins))
+    print('Tea time is 4 pm.')
+    
+  elif city == 'Colombo, Sri Lanka':
+    #add 13.5 to the time
+    hour += 13
+    mins += 30
+    #limit minutes to 60
+    if mins >= 60:
+      mins -=60
+      hour += 1
+    #limit hour to 24
+    if hour >= 24:
+        hour -= 24
+    #print the new time 'hour:mins'
+    #print 'In [place], it is [time]'
+    print('In ' + city +  ' it is ' + str(hour) + ':' + str(mins))
+    print('Time to go to Viharamahadevi Park!')
+  
+  elif city == 'Denver, Colorado':
+    #add 1 to the time
+    hour += 1
+    #limit hour to 24
+    if hour >= 24:
+        hour -= 24
+    #print the new time 'hour:mins'
+    #print 'In [place], it is [time]'
+    print('In ' + city +  ' it is ' + str(hour) + ':' + str(mins))
+    print('Time to go to Aspen!')
+    
+  elif city == 'Honolulu, Hawaii':
+    #subtract 2 from the time
+    hour += -2
+    #limit hour to 24
+    if hour >= 24:
+        hour -= 24
+    #print the new time 'hour:mins'
+    #print 'In [place], it is [time]'
+    print('In ' + city +  ' it is ' + str(hour) + ':' + str(mins))
+    print('Time to go to the beach!')
+  
+   
+ 
+ 
+ '''
+ NOTE TO SELF!! FIX!!!!
+ What is the time in California? (in the format HH:MM)  12:04
+Where do you want to convert to? (in the format above)  Paris, France
+In Paris, France it is 21:4
+I believe that is... BAGUETTE TIME!
+ '''
+ 
+   
+ 
+ 
+ 
+
+ 
+ 
+Time()
